@@ -30,14 +30,14 @@ export async function accountMain(list) {
 
 	const accountTable = div.querySelector('.cur-account');
 	const accList = Array.from(await accountList());
-	for (let i = 0; i < accList.length; i++) {
+	for (const acc of accList) {
 		const tr = document.createElement('tr');
-		tr.id = `${accList[i].id}`;
+		tr.id = `${acc.id}`;
 		tr.innerHTML = `
-    <td>${accList[i].bankName}</td>
-    <td>${accList[i].accountNumber}</td>
-    <td>${accList[i].balance.toLocaleString(navigator.language)}</td>
-		<button type="button" class="btn-del" id="${accList[i].id}" style="display:none">해지</button>
+    <td>${acc.bankName}</td>
+    <td>${acc.accountNumber}</td>
+    <td>${acc.balance.toLocaleString(navigator.language)}</td>
+		<button type="button" class="btn-del" id="${acc.id}" style="display:none">해지</button>
 		`;
 		accountTable.append(tr);
 	}
@@ -53,7 +53,7 @@ export async function accountMain(list) {
 	});
 
 	async function displayAdd() {
-		const res = await chooseBank();
+		const chosenBank = await chooseBank();
 		const div = document.createElement('div');
 		div.id = 'account-add';
 		div.innerHTML = `
@@ -68,26 +68,27 @@ export async function accountMain(list) {
 			accountMain();
 		});
 
-		for (let i = 0; i < res.length; i++) {
-			const array = Object.values(res[i]);
-			if (array[3] === false) {
+		for (const bank of chosenBank) {
+			console.log(bank);
+			const bankInfo = Object.values(bank);
+			if (bankInfo[3] === false) {
 				const content = document.createElement('div');
 				content.id = 'chooseContent';
 				content.innerHTML = `
 
-				<button type="button" id="${array[1]}">
-				${array[0]}
+				<button type="button" id="${bankInfo[1]}">
+				${bankInfo[0]}
 				</button>
 				<form></form>
 				`;
 				div.querySelector('.choose-container').append(content);
 
-				const btnBank = document.getElementById(`${array[1]}`);
-				const digitLength = array[2].reduce((a, b) => a + b, 0);
+				const btnBank = document.getElementById(`${bankInfo[1]}`);
+				const digitLength = bankInfo[2].reduce((a, b) => a + b, 0);
 				const form = document.querySelector('form');
 				btnBank.addEventListener('click', () => {
 					form.innerHTML = ``;
-					form.id = `${array[1]}`;
+					form.id = `${bankInfo[1]}`;
 					form.innerHTML = `
 					<label for="accountNumber">계좌번호</label>
 					<input name = "accountNumber" type="text"  maxlength="${digitLength}" pattern="^[0-9]+$"	required></br>
@@ -100,10 +101,10 @@ export async function accountMain(list) {
 					`;
 					content.append(form);
 
-					let bankCode = '',
-						accountNumber = '',
-						phoneNumber = '',
-						signature = '';
+					let bankCode = '';
+					let accountNumber = '';
+					let phoneNumber = '';
+					let signature = '';
 
 					form.querySelector('input[name="accountNumber"]').addEventListener('input', e => {
 						accountNumber = e.target.value;

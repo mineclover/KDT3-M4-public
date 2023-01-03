@@ -5,6 +5,78 @@
 	justify-content: space-evenly;
 	align-items: center;
 	background-color: white;
-	width: 400px;
+	width: 450px;
 	height: 600px;
+	h1 {
+		font-size: 25px;
+	}
+
+	#signIn {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		font-size: 20px;
+		height: 350px;
+
+		input {
+			height: 25px;
+			width: 200px;
+			border: none;
+			border-bottom: 1px solid #555;
+		}
+
+		button {
+			width: 300px;
+			height: 50px;
+		}
+
+		#auth-alternative {
+			margin-top: 20px;
+		}
+	}
+
+	#signUp {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		font-size: 20px;
+		width: 350px;
+		height: 450px;
+
+		input {
+			height: 25px;
+			width: 200px;
+			border: none;
+			border-bottom: 1px solid #555;
+		}
+
+		button {
+			width: 350px;
+			height: 50px;
+		}
+		#auth-alternative {
+			margin-top: 20px;
+		}
+	}
+
+	#editInfo {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		font-size: 20px;
+		width: 350px;
+		height: 400px;
+
+		input {
+			height: 25px;
+			width: 200px;
+			border: none;
+			border-bottom: 1px solid #555;
+		}
+
+		button {
+			width: 350px;
+			height: 50px;
+		}
+	}
 }

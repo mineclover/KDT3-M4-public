@@ -208,7 +208,7 @@ export function modalEditInfo(element) {
   <input type = "file" id = "picture" name="picture">
   </div>
   <div class = "form-control">
-    <label for="userName"></label>
+    <label for="userName">이름</label>
     <input type = "text" id="userName" name="userName" placeholder="name">
   </div>
   <div class = "form-control">

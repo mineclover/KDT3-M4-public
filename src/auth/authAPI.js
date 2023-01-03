@@ -14,41 +14,44 @@ authConfirm()
 	});
 
 export async function signUp({ email, password, displayName, profileImgBase64 }) {
-	try {
-		await axios(address + '/auth/signup', {
-			method: 'POST',
-			headers: DefaultHeader,
-			data: JSON.stringify({ email, password, displayName, profileImgBase64 })
-		}).then(res => {
+	await axios(address + '/auth/signup', {
+		method: 'POST',
+		headers: DefaultHeader,
+		data: JSON.stringify({ email, password, displayName, profileImgBase64 })
+	})
+		.then(res => {
+			console.log('회원가입', res.data);
 			const { accessToken, user } = res.data;
 			localStorage.setItem('accessToken', accessToken);
 			localStorage.setItem('user', JSON.stringify(user));
 			AfterSignIn();
+		})
+		.catch(error => {
+			console.log(error.response);
+			if (error.response.status === 401) {
+				toast(error.response.data);
+			}
 		});
-	} catch (error) {
-		if (error.response.status === 401) {
-			toast(error.response.data);
-		}
-	}
 }
 
 export async function signIn(email, password) {
-	try {
-		await axios(address + '/auth/login', {
-			method: 'POST',
-			headers: DefaultHeader,
-			data: JSON.stringify({ email, password })
-		}).then(res => {
+	await axios(address + '/auth/login', {
+		method: 'POST',
+		headers: DefaultHeader,
+		data: JSON.stringify({ email, password })
+	})
+		.then(res => {
+			console.log('로그인', res.data);
 			const { accessToken, user } = res.data;
 			localStorage.setItem('accessToken', accessToken);
 			localStorage.setItem('user', JSON.stringify(user));
 			AfterSignIn();
+		})
+		.catch(error => {
+			console.log(error);
+			toast(error.response.data);
 		});
-	} catch (error) {
-		toast(error.response.data);
-	}
 }
-
 /**
  * 인증 확인
  * 토큰만 있을 때 유저 정보를 가져옴
@@ -84,23 +87,24 @@ async function signOut() {
 }
 
 export async function editInfo(displayName, profileImgBase64, oldPassword, newPassword) {
-	try {
-		const token = localStorage.getItem('accessToken');
-		const res = await axios(address + '/auth/user', {
-			method: 'PUT',
-			headers: {
-				...DefaultHeader,
-				Authorization: `Bearer ${token}`
-			},
-			data: JSON.stringify({ displayName, profileImgBase64, oldPassword, newPassword })
-		}).then(res => {
+	const token = localStorage.getItem('accessToken');
+	const res = await axios(address + '/auth/user', {
+		method: 'PUT',
+		headers: {
+			...DefaultHeader,
+			Authorization: `Bearer ${token}`
+		},
+		data: JSON.stringify({ displayName, profileImgBase64, oldPassword, newPassword })
+	})
+		.then(res => {
+			console.log('변경완료');
 			const user = res.data;
 			localStorage.setItem('user', JSON.stringify(user));
 			AfterSignIn();
+		})
+		.catch(error => {
+			toast(error.response.data);
 		});
-	} catch (error) {
-		toast(error.response.data);
-	}
 }
 
 export function AfterSignIn() {
@@ -125,7 +129,7 @@ export function AfterSignIn() {
   `;
 	const navAccount = document.createElement('a');
 	navAccount.href = '/#account';
-	navAccount.innerHTML = `<i class="fa-solid fa-won-sign"></i>결제수단 관리	`;
+	navAccount.innerHTML = `<i class="fa-solid fa-won-sign"></i> 결제수단 관리	`;
 
 	document.querySelector('.gnb_my').addEventListener('click', () => {
 		document.querySelector('.gnb_dropdown').classList.toggle('on');
