@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://kit.fontawesome.com/febf8ecb9c.js" crossorigin="anonymous"></script>
+		<script type="module" src="./main.js"></script>
+
+		<link rel="stylesheet" href="./scss/main.scss" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<header class="header">
+			<div class="first-row">
+				<a href="/">
+					<img class="logo" src="./image/오늘의 경매.png" alt="todayAuction logo" />
+				</a>
+				<div class="search">
+					<input type="text" placeholder="Search.." name="search" />
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</div>
+				<div class="nav-auth"></div>
+			</div>
+			<div class="second-row">
+				<ul>
+					<li class="category">
+						<a href="javascript:void(0)">
+							<i class="fa-solid fa-bars"></i>
+							<span>카테고리</span></a
+						>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div id="toast"></div>
+		<main id="main"></main>
+		<footer></footer>
+	</body>
+</html>

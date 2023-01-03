@@ -1,0 +1,342 @@
+@import 'value.scss';
+
+ul.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+
+	.product {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: flex-start;
+		box-sizing: border-box;
+		border: 1px solid #000;
+		width: 100%;
+		height: 200px;
+		padding: 10px;
+		column-gap: 10px;
+		cursor: help;
+
+		.thumbnail {
+			aspect-ratio: 5/6;
+			height: 180px;
+			flex-shrink: 0;
+
+			box-sizing: border-box;
+			background-color: antiquewhite;
+			border-radius: 8px;
+			overflow: hidden;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.info {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			height: 100%;
+			flex-grow: 1;
+			row-gap: 10px;
+			.title {
+				font-size: 20px;
+				font-weight: 700;
+			}
+			.price {
+				font-size: 16px;
+				font-weight: 600;
+				color: $color-main;
+			}
+			.date {
+				display: flex;
+				flex-direction: row;
+				font-size: 16px;
+			}
+			.description {
+				font-size: 14px;
+			}
+			.showcase-menu {
+				position: absolute;
+				bottom: 0;
+				display: flex;
+				flex-direction: row;
+				column-gap: 10px;
+			}
+
+			.toPromotion,
+			.toReplica {
+				display: flex;
+				flex-direction: row;
+				column-gap: 10px;
+				justify-content: space-between;
+				box-sizing: border-box;
+				padding: 0 16px;
+				align-items: center;
+				width: 100%;
+				height: 30px;
+				border: 1px solid $color-main;
+				border-radius: 8px;
+				font-size: 14px;
+				font-weight: 700;
+				cursor: pointer;
+				&:hover {
+					background-color: $color-main;
+					color: $color-tint;
+				}
+			}
+			.delete-btn {
+				position: absolute;
+				right: 0;
+				top: 0;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 32px;
+				height: 32px;
+				border: none;
+				background-color: #fff;
+				border-radius: 8px;
+				font-size: 14px;
+				font-weight: 700;
+				cursor: pointer;
+				i {
+					margin: 0 auto;
+					font-size: 24px;
+					color: $color-main;
+				}
+
+				&:hover {
+					background-color: $color-main;
+					i {
+						color: $color-tint;
+					}
+				}
+			}
+		}
+	}
+}
+
+.add-info {
+	display: flex;
+
+	flex-direction: row;
+
+	box-sizing: border-box;
+	align-items: flex-start;
+
+	.add-info-box {
+		display: flex;
+		flex-direction: column;
+		row-gap: 1em;
+		max-height: 80vh;
+		overflow-y: auto;
+
+		.tags-area {
+			position: relative;
+			display: flex;
+			label {
+				width: 46%;
+			}
+		}
+
+		label {
+			width: 100%;
+			font-weight: 700;
+			padding: 0.2em;
+			row-gap: 0.5em;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: left;
+			padding: 1em 0;
+			border-bottom: 1px dashed #ccc;
+		}
+		input,
+		textarea {
+			box-sizing: border-box;
+			width: 100%;
+
+			border: 1px solid transparent;
+			border-bottom: 2px solid #ccc;
+
+			resize: none;
+			outline: none;
+
+			&.id {
+				border: 1px solid $color-main;
+				background-color: #eee;
+				font-weight: 700;
+			}
+		}
+	}
+
+	ul.selector {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+
+		margin-bottom: 1em;
+		li {
+			width: 100%;
+			text-align: center;
+			padding: 0.6em;
+			background-color: white;
+			border: 2px solid transparent;
+			border-bottom: 2px solid #ccc;
+		}
+
+		li.on {
+			font-weight: 400;
+			z-index: 10;
+
+			color: $color-main;
+			border: 1px solid $color-main;
+
+			border-bottom: 3px solid $color-main;
+			border-radius: 0.5em 0.5em 0 0;
+			font-weight: 700;
+		}
+	}
+
+	.result-box {
+		position: relative;
+		left: 0;
+		top: 16px;
+		padding: 16px;
+		width: 600px;
+		max-height: 100%;
+		display: flex;
+		flex-direction: column;
+
+		z-index: 1;
+		border-radius: 0 1em 1em 0;
+		box-shadow: 1px 1px 8px #ccc;
+		background-color: #eee;
+		box-sizing: border-box;
+
+		.result-scroll {
+			position: relative;
+			display: block;
+			box-sizing: border-box;
+			max-height: 100%;
+			height: 70vh;
+			right: 0;
+			top: 0;
+			background-color: #fff;
+			overflow-y: auto;
+		}
+	}
+
+	.add-warp {
+		position: relative;
+		display: flex;
+		box-sizing: border-box;
+		max-height: 100%;
+		flex-direction: column;
+		z-index: 10;
+		width: 400px;
+		padding: 1em;
+		background-color: #fff;
+		box-shadow: 1px 1px 8px #ccc;
+		border-radius: 1em;
+	}
+
+	.option-box {
+		position: relative;
+		left: 0;
+		top: 16px;
+		padding: 16px;
+		width: 600px;
+		max-height: 78vh;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+
+		z-index: 1;
+		border-radius: 1em 0 0 1em;
+		box-shadow: 1px 1px 8px #ccc;
+		background-color: #eee;
+		box-sizing: border-box;
+		.options {
+			position: relative;
+			display: block;
+			box-sizing: border-box;
+			max-height: 100%;
+			height: 50vh;
+			right: 0;
+			top: 0;
+			background-color: #fff;
+			overflow-y: auto;
+		}
+		.base-options {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			box-sizing: border-box;
+			max-height: 100%;
+
+			background-color: #fff;
+		}
+
+		.tags-right {
+			position: relative;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #ddd;
+
+			.tag {
+				position: relative;
+				display: flex;
+				align-items: center;
+				flex-direction: row;
+				justify-content: center;
+				width: 100%;
+				height: 30px;
+				padding: 0 10px;
+				border-radius: 8px;
+				background-color: #fff;
+				box-sizing: border-box;
+				margin-bottom: 10px;
+				cursor: pointer;
+				&:hover {
+					background-color: $color-main;
+					color: $color-tint;
+				}
+				.delete {
+					position: absolute;
+					display: flex;
+					align-items: center;
+					height: 100%;
+					right: 0;
+					padding: 0 16px;
+					border-radius: 0 7px 7px 0;
+
+					&:hover {
+						background-color: $color-tint;
+						color: $color-main;
+					}
+				}
+			}
+		}
+	}
+}
+
+hr {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+
+	background-color: #000;
+	height: 2px;
+	border-radius: 1px;
+}

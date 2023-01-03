@@ -1,0 +1,246 @@
+@import 'value.scss';
+
+.promotion-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 32px 0;
+	box-sizing: border-box;
+	position: relative;
+	width: 100vw;
+	height: 110vh;
+	padding: 5vh;
+	background-color: blueviolet;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid black;
+	.promotion-top {
+		position: relative;
+		display: flex;
+		justify-content: flex-end;
+		width: 1200px;
+		height: 50vh;
+
+		.promotion-top-left {
+			position: absolute;
+			width: 600px;
+
+			box-shadow: 3px 3px 8px #ccc;
+			border-radius: 16px;
+			overflow: hidden;
+			left: 0;
+			top: 2vh;
+			bottom: 2vh;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		.promotion-top-right {
+			width: 480px;
+			margin: 32px;
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			.title {
+				font-size: 32px;
+				font-weight: 500;
+				margin-bottom: 16px;
+				color: #fff;
+			}
+			.tags {
+				display: flex;
+				flex-direction: row;
+				gap: 8px;
+				margin-bottom: 16px;
+				.tag {
+					padding: 4px 8px;
+					border-radius: 8px;
+					background-color: #fff;
+					color: #000;
+					font-size: 14px;
+					font-weight: 700;
+				}
+			}
+			.price {
+				font-size: 48px;
+				font-weight: 700;
+				margin-top: 48px;
+				margin-bottom: 48px;
+				color: $color;
+			}
+			.description {
+				position: absolute;
+				bottom: 0;
+				font-size: 16px;
+				font-weight: 400;
+
+				padding: 16px;
+				color: #fff;
+				letter-spacing: 0.5px;
+				line-height: 1.5;
+				background-color: rgba(0, 0, 0, 0.2);
+				border-radius: 8px;
+			}
+			.remain {
+				position: absolute;
+				top: 50px;
+				right: 0;
+				font-size: 18px;
+				font-weight: 500;
+				color: #fff;
+			}
+			.date {
+				position: absolute;
+				top: 32px;
+				right: 0;
+				font-size: 16px;
+				font-weight: 400;
+				margin-bottom: 16px;
+				color: #fff;
+				transition: 0.3s color ease-in-out;
+			}
+			.remain,
+			.date,
+			.price,
+			.title,
+			.tag {
+				&:hover {
+					color: $color-main;
+					transition: 0.3s color ease-in-out;
+				}
+			}
+		}
+	}
+
+	.promotion-bottom {
+		box-sizing: border-box;
+		position: relative;
+		width: 1200px;
+		height: 50vh;
+
+		.swiper {
+			width: 100%;
+			height: 100%;
+		}
+		.swiper-wrapper {
+			max-height: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: row;
+		}
+
+		.swiper-slide {
+			flex-shrink: 0;
+			height: 100%;
+			max-height: 100%;
+			text-align: center;
+			font-size: 18px;
+
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+			flex-direction: column;
+
+			.showcase {
+				margin: 16px;
+				padding: 16px 0;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				background-color: #fff;
+				border-radius: 16px;
+				box-shadow: 1px 1px 10px #eee;
+				z-index: 2;
+
+				.tags {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					gap: 8px;
+					.tag {
+						padding: 4px 8px;
+						border-radius: 8px;
+						background-color: #fff;
+						color: #000;
+						font-size: 14px;
+						font-weight: 700;
+					}
+				}
+			}
+			.thumbnail {
+				width: 90%;
+
+				border-radius: 16px;
+
+				object-fit: cover;
+
+				overflow: hidden;
+				margin-bottom: 16px;
+				box-shadow: 1px 1px 10px #eee;
+				img {
+					aspect-ratio: 6 / 4;
+				}
+			}
+			.title {
+				font-size: 16px;
+				height: 2em;
+				font-weight: 500;
+				margin-bottom: 8px;
+				color: $color-dark;
+			}
+			.price {
+				font-size: 24px;
+				font-weight: 600;
+				margin-bottom: 8px;
+				color: $color-dark;
+			}
+			.timer-box {
+				position: relative;
+				top: -32px;
+				padding-top: 16px;
+				z-index: 1;
+				width: 100%;
+
+				background-color: rgba(0, 0, 0, 0.2);
+				border-radius: 0 0 16px 16px;
+				.timer-msg {
+					font-size: 16px;
+					font-weight: 400;
+					margin-top: 16px;
+					color: $color;
+				}
+				.timer {
+					font-size: 28px;
+					font-weight: 200;
+					margin-bottom: 16px;
+					color: $color;
+				}
+			}
+		}
+
+		.swiper-slide img {
+			display: flex;
+			width: 100%;
+
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
